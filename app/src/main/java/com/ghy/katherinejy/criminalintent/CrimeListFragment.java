@@ -1,5 +1,6 @@
 package com.ghy.katherinejy.criminalintent;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.ListFragment;
@@ -35,6 +36,11 @@ public class CrimeListFragment extends ListFragment {
         //Crime c = (Crime)(getListAdapter()).getItem(position);
         Crime c = ((CrimeAdapter)getListAdapter()).getItem(position);
         Log.d(TAG,c.getTitle()+"was click");
+
+        //start crimeActivity
+        Intent i = new Intent(getActivity(),CrimeActivity.class);
+        i.putExtra(CrimeFragment.EXTRA_CRIME_ID,c.getId());
+        startActivity(i);
     }
 
     private class CrimeAdapter extends ArrayAdapter<Crime> {
