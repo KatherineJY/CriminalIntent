@@ -27,6 +27,10 @@ public class Crime {
         this.mTitle = mTitle;
     }
 
+    public void setDate(Date date) {
+        mDate = date;
+    }
+
     public Date getDate() {
         return mDate;
     }
