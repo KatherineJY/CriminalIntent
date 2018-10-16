@@ -39,4 +39,8 @@ public class CrimeLab {
         }
         return null;
     }
+
+    public void addCrime(Crime crime){
+        mCrimes.add(crime);
+    }
 }
