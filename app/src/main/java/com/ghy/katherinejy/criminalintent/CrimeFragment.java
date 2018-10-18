@@ -17,6 +17,7 @@ import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
 
+import java.io.IOException;
 import java.util.Date;
 import java.util.UUID;
 
@@ -111,6 +112,16 @@ public class CrimeFragment extends Fragment {
             Date date = (Date)data.getSerializableExtra(DatePickerFragment.EXTRA_DATE);
             mCrime.setDate(date);
             updateDate();
+        }
+    }
+
+    @Override
+    public void onPause(){
+        super.onPause();
+        try {
+            CrimeLab.get(getActivity()).saveCrimes();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 
