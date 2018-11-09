@@ -53,7 +53,7 @@ public class CrimeListFragment extends ListFragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup parent, Bundle savedInstanceState) {
         View v = super.onCreateView(inflater,parent,savedInstanceState);
         ListView listView = (ListView) v.findViewById(android.R.id.list);
-        //registerForContextMenu(listView);
+        registerForContextMenu(listView);
         listView.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE_MODAL);
         listView.setMultiChoiceModeListener(new AbsListView.MultiChoiceModeListener() {
             @Override
