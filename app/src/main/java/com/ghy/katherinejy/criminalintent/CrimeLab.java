@@ -21,17 +21,23 @@ public class CrimeLab {
 
         try {
             mCrimes = mSerializer.loadCrimes();
-        } catch (Exception e) {
-            e.printStackTrace();
-            mCrimes = new ArrayList<Crime>();
-            /*
             for(int i=0;i<100;i++) {
                 Crime c = new Crime();
                 c.setTitle("Crime #" + i);
                 c.setSolved(i % 2 == 0);
                 mCrimes.add(c);
             }
-            */
+        } catch (Exception e) {
+            e.printStackTrace();
+            mCrimes = new ArrayList<Crime>();
+
+//            for(int i=0;i<100;i++) {
+//                Crime c = new Crime();
+//                c.setTitle("Crime #" + i);
+//                c.setSolved(i % 2 == 0);
+//                mCrimes.add(c);
+//            }
+
         }
     }
 
@@ -56,6 +62,10 @@ public class CrimeLab {
 
     public void addCrime(Crime crime){
         mCrimes.add(crime);
+    }
+
+    public void deleteCrime(Crime c){
+        mCrimes.remove(c);
     }
 
     public boolean saveCrimes() throws IOException {
