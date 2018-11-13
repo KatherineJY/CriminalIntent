@@ -11,11 +11,13 @@ public class Crime {
     private String mTitle;
     private Date mDate;
     private boolean mSolved;
+    private String mSuspect;
 
     private static final String JSON_ID = "id";
     private static final String JSON_TITLE = "title";
     private static final String JSON_SOLVED = "solved";
     private static final String JSON_DATE    = "date";
+    private static final String JSON_SUSPECT = "suspect";
 
     public Crime(){
         mId = UUID.randomUUID();
@@ -27,6 +29,9 @@ public class Crime {
         if( json.has(JSON_TITLE) ){
             mTitle = json.getString(JSON_TITLE);
         }
+        if( json.has(JSON_SUSPECT) ) {
+            mSuspect = json.getString(JSON_SUSPECT);
+        }
         mSolved = json.getBoolean(JSON_SOLVED);
         mDate = new Date(json.getString(JSON_DATE));
     }
@@ -37,6 +42,7 @@ public class Crime {
         json.put(JSON_TITLE,mTitle);
         json.put(JSON_SOLVED,mSolved);
         json.put(JSON_DATE,mDate.getTime());
+        json.put(JSON_SUSPECT,mSuspect);
         return json;
     }
 
@@ -66,6 +72,14 @@ public class Crime {
 
     public void setSolved(boolean mSolved) {
         this.mSolved = mSolved;
+    }
+
+    public String getmSuspect() {
+        return mSuspect;
+    }
+
+    public void setmSuspect(String mSuspect) {
+        this.mSuspect = mSuspect;
     }
 
     @Override

@@ -12,6 +12,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
+import java.util.List;
+
 public class CrimeCameraFragment extends Fragment {
     private Camera mCamera;
     private SurfaceView mSurfaceView;
@@ -46,7 +48,7 @@ public class CrimeCameraFragment extends Fragment {
             public void surfaceChanged(SurfaceHolder holder, int format, int width, int height) {
                 if( mCamera==null ) {
                     Camera.Parameters parameters = mCamera.getParameters();
-                    Camera.Size s = null;
+                    Camera.Size s = getBestSupportiveSize(parameters.getSupportedPictureSizes(),width,height);
                     parameters.setPreviewSize(s.width,s.height);
                     mCamera.setParameters(parameters);
                     try {
@@ -87,5 +89,18 @@ public class CrimeCameraFragment extends Fragment {
             mCamera.release();
             mCamera=null;
         }
+    }
+
+    private Camera.Size getBestSupportiveSize(List<Camera.Size> sizes, int width, int height){
+        Camera.Size bestSize = sizes.get(0);
+        int largestArea = bestSize.width*bestSize.height;
+        for(Camera.Size size:sizes) {
+            int area = size.width*size.height;
+            if (area>largestArea) {
+                largestArea = area;
+                bestSize = size;
+            }
+        }
+        return bestSize;
     }
 }

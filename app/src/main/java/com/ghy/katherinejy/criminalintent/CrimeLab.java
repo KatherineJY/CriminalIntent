@@ -11,7 +11,7 @@ import java.util.UUID;
 public class CrimeLab {
     private static CrimeLab sCrimeLab;
     private Context mAppContext;
-    private ArrayList<Crime> mCrimes;
+    private ArrayList<Crime> mCrimes = new ArrayList<Crime>();
     private CriminalIntentJSONSerializer mSerializer;
     private static final String filename = "aaa.txt";
 
@@ -20,7 +20,7 @@ public class CrimeLab {
         mSerializer = new CriminalIntentJSONSerializer(mAppContext,filename);
 
         try {
-            mCrimes = mSerializer.loadCrimes();
+//            mCrimes = mSerializer.loadCrimes();
             for(int i=0;i<100;i++) {
                 Crime c = new Crime();
                 c.setTitle("Crime #" + i);
